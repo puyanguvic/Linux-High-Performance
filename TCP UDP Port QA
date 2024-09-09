@@ -1,0 +1,33 @@
+# Takeaways: Can TCP and UDP Use the Same Port?
+
+### Q1: Can TCP and UDP use the same port number?
+
+**Answer: Yes.**
+
+- Both TCP and UDP have port ranges from 0 to 65535. Although the same port number can be used by both TCP and UDP, they operate independently.
+- For example, **UDP port 53** is used by DNS, but **TCP port 53** can also be used by DNS for larger queries. Both protocols can use port 53 simultaneously for different purposes.
+- Well-Known Ports (1-1023) are often assigned to specific services and can be used by both TCP and UDP simultaneously, depending on the service's needs.
+
+### Q2: Can multiple client processes use the same TCP port number simultaneously?
+
+**Answer: No.**
+
+- A combination of client IP address and TCP port (e.g., `1.1.1.1:8888`) can only be used by one process at a time. Once a process is using a TCP port, it remains locked until released (e.g., after the connection is closed and in `TIME_WAIT` state).
+
+### Q3: Can multiple client processes use the same UDP port number simultaneously?
+
+**Answer: No, but with some exceptions.**
+
+- If a client explicitly binds to a UDP port (e.g., `UDP 8888`), it becomes exclusive to that process. However, if the client doesn't bind the port manually, the system may allow multiple processes to temporarily use the same port due to UDP's connectionless nature.
+
+### Q4: Can multiple server processes listen on the same TCP port?
+
+**Answer: Not by default, but possible with `SO_REUSEADDR`.**
+
+- Normally, only one server process can listen to a specific TCP port. However, by configuring `SO_REUSEADDR`, multiple processes can listen on the same port but handle connections on different network interfaces.
+
+### Q5: Can multiple server processes listen on the same UDP port?
+
+**Answer: Yes, with `SO_REUSEADDR` or `SO_REUSEPORT`.**
+
+- These options allow multiple processes to share the same UDP port, especially useful in multicast or broadcast scenarios where multiple processes may need to receive the same data.
