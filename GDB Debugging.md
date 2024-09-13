@@ -128,3 +128,86 @@ gdb ./program
     - ``` s ``` - String
     - Exampe: ``` (gdb) x /4xw 0x7fffffffe000 ```
      
+## Modifying Variables at Runtime
+- Set Variable Value:
+```
+(gdb) set variable_name = new_value
+```
+## Scripting and Automation
+- GDB Scripts:
+  - Create a file (e.g., ``` gdb_commands.gdb) with GDB commands
+  - Run GDB with the script:
+  ```
+  gdb -x gdb_commands.gdb ./program
+  ```
+# Practical Debugging Scenarios
+## Debugging Segmentation Faults
+- Run the Program:
+```
+(gdb) run
+```
+- When it Crashes, View the backtrace:
+```
+(gdb) backtrace
+```
+- Inspect Variables and Memory:
+```
+(gdb) print variable_name
+```
+- Check Points and Array Indexs
+## Memory Leaks and Corruption
+- Use tools like **Valgrind** alongside GDB to detect memory issues.
+- **Insepct Dynamic Memory Allocation**
+  - Check for proper use of ```malloc```, ```calloc```, ```realloc```, and ```free```.
+## Logical Errors
+- Set Breakpoints at Key Functions.
+- Step Through Code to Observe Logic Flow.
+- Inspect Variable Values at Each Step.
+
+## Multithreaded Debugging
+- List Threads:
+```
+(gdb) info threads
+```
+- Switch Between Threads.
+```
+(gdb) thread thread_number
+```
+Set Breakpoints in Specific Threads.
+```
+(gdb) break function_name thread thread_number
+```
+
+# Interview Tips and Strategies
+## Common Interview Questions
+- Explain How You Debug a Segmentation Fault.
+- Describe How to Use Breakpoints and Watchpoints.
+- Demonstrate Finding a Memory Lack
+- Debug a Provided Code Snippet Live
+
+## Demonstrating Problem-Solving Skills
+- Think Aloud: Explain your thought process.
+- Be Methodical: Start from known points and procceed step by step
+- Use GDB Efficiently: Show familiarity with commands.
+
+## Communicating Effectively
+- Clarify Questions: Ensure you understand the problem.
+- Explain Actions: Describe what you're doing and why.
+- Ask for Input: If unsure, ask the interviewer for clarification.
+
+# Additional Resources
+## Recommended Books
+- **"The Art of Debugging with GDB, DDD, and Eclipse"** by Nome Matloff and Peter Jay Salzman
+- **"GDB Pocket Reference"** by Arnold Robbins.
+## Online Tutorials and Documentation
+- **GDB official Documentation:**
+  https://www.gnu.org/software/gdb/documentation/
+- **GDB User Manual:** Comprehensive guide covering all aspects of GDB.
+
+## Practice Exercises
+- Debugging Practice:
+  - Write a small program with intentional bugs to practice.
+  - Use open-source projects to explore real-world debugging.
+- Online Platforms:
+  - **LeetCode** and **HackerRank** sometimes include debugging challenges.
+  - Debugging challenges on educational platform
