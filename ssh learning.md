@@ -45,14 +45,38 @@ SFTP provids an interactive file transfer interface. Here's how you can use it:
 ```
 sftp username@remote_host
 ```
+- List local files
+```
+lls
+```
+- List remote files
+```
+ls
+```
+- look at the current remote direction
+```
+pwd
+```
+- Look at the current local direction
+```
+lpwd
+```
+- change the remote direction
+```
+cd
+```
+- change the local direction
+```
+lcd
+```
 - Upload a file from local to remote:
 ```
+put filename
 ```
-
-
-
-
-
+- Download a file from remote:
+```
+get filename
+```
 
 
 
